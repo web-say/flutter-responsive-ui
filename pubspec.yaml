@@ -64,15 +64,8 @@ flutter:
   uses-material-design: true
   
   assets:
-    - assets/images/flutter.png
-    - assets/icons/menu_dashbord.svg
-    - assets/icons/menu_trnsaction.svg
-    - assets/icons/menu_task.svg
-    - assets/icons/menu_doc.svg
-    - assets/icons/menu_store.svg
-    - assets/icons/menu_notification.svg
-    - assets/icons/menu_profile.svg
-    - assets/icons/menu_settings.svg
+    - assets/images/
+    - assets/icons/
 
 
   # To add assets to your application, add an assets section, like this:
