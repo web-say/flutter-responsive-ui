@@ -18,7 +18,7 @@ class StorageInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: defaultPadding),
+      margin: const EdgeInsets.only(top: defaultPadding),
       padding: const EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
         border: Border.all(
@@ -50,7 +50,7 @@ class StorageInfoCard extends StatelessWidget {
                   ),
                   Text(
                     "$numOfFiles Files",
-                    style: TextStyle(color: Colors.white70),
+                    style: const TextStyle(color: Colors.white70),
                   ),
                 ],
               ),

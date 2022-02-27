@@ -13,7 +13,7 @@ class SideMenu extends StatelessWidget {
         child: Column(
           children: [
             DrawerHeader(
-              child: Image.asset('assets/images/flutter-logo.png'),
+              child: Image.asset('assets/images/flutter-logo.png', width: 60),
             ),
             DrawerListTile(
               title: 'Dashboard',

@@ -26,7 +26,7 @@ class Chart extends StatelessWidget {
           Positioned.fill(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 SizedBox(
                   height: defaultPadding,
                 ),

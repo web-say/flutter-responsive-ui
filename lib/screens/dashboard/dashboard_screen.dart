@@ -2,6 +2,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_ui/constants.dart';
+// import 'package:flutter_responsive_ui/models/RecentFile.dart';
+import 'package:flutter_responsive_ui/responsive.dart';
+import 'package:flutter_responsive_ui/screens/dashboard/components/recent_files.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'components/chart.dart';
 import 'components/header.dart';
@@ -58,13 +62,32 @@ class DashboardScreen extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Expanded(flex: 5, child: MyFiles()),
-                const SizedBox(width: defaultPadding),
                 Expanded(
-                  flex: 2,
-                  child:
-                      StorageDetails(paiChartSectionData: paiChartSectionData),
+                  flex: 5,
+                  child: Column(
+                    children: [
+                      MyFiles(),
+                      SizedBox(height: defaultPadding),
+                      RecentFiles(),
+                      if (Responsive.isMobile(context))
+                        SizedBox(height: defaultPadding),
+                      // Mobile
+                      if (Responsive.isMobile(context))
+                        StorageDetails(
+                            paiChartSectionData: paiChartSectionData),
+                    ],
+                  ),
                 ),
+                // Mobile
+                if (!Responsive.isMobile(context))
+                  SizedBox(width: defaultPadding),
+                // Mobile
+                if (!Responsive.isMobile(context))
+                  Expanded(
+                    flex: 2,
+                    child: StorageDetails(
+                        paiChartSectionData: paiChartSectionData),
+                  ),
               ],
             )
           ],

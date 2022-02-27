@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_ui/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_responsive_ui/controller/MenuController.dart';
+import 'package:flutter_responsive_ui/responsive.dart';
+import 'package:provider/provider.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -11,11 +13,17 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          "Dashboard",
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        const Spacer(),
+        if (!Responsive.isDesktop(context))
+          IconButton(
+              onPressed: context.read<MenuController>().controlMenu,
+              icon: Icon(Icons.menu)),
+        if (!Responsive.isMobile(context))
+          Text(
+            "Dashboard",
+            style: Theme.of(context).textTheme.headline6,
+          ),
+        if (!Responsive.isMobile(context))
+          Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         const Expanded(
           child: SearchField(),
         ),
@@ -46,10 +54,11 @@ class ProfileCard extends StatelessWidget {
             "assets/images/user.jpg",
             height: 38,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-            child: Text('User Name'),
-          ),
+          if (!Responsive.isMobile(context))
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              child: Text('User Name'),
+            ),
           const Icon(Icons.keyboard_arrow_down),
         ],
       ),
@@ -64,12 +73,12 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return const TextField(
       decoration: InputDecoration(
         hintText: 'Search',
         fillColor: secondaryColor,
         filled: true,
-        border: const OutlineInputBorder(
+        border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.all(
             Radius.circular(10),
